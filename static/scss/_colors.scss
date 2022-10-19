@@ -1,0 +1,63 @@
+@use "sass:math";
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function theme-color($name){
+  @return map-get($theme-colors, $name)
+}
+
+
+
+$theme-colors: (
+  primary: #0B168E,
+  secondary: #420B8E,
+  tertiary: #0B578E,
+);
+
+$danger: #FF0000;
+$warning: #FFC800;
+
+$steps: 6;
+
+// .bg-primary {
+//   background-color: theme-color(primary);
+// }
+// .text-primary {
+//   color: theme-color(primary)
+// }
+// .border-primary{
+//   color: theme-color(primary)
+// }
+
+@each $name, $value in $theme-colors {
+  .bg-#{$name} {
+    background-color: theme-color($name);
+  }
+  .text-#{$name} {
+    color: theme-color($name)
+  }
+  .border-#{$name}{
+    color: theme-color($name)
+  }
+  .outline-#{$name} {
+    outline-color: theme-color($name);
+  }
+  @for $i from 1 through $steps {
+    $multiplier: $i * 100;
+    $divisor: 1000;
+    .bg-primary-#{$multiplier} {
+      background-color: lighten(theme-color(primary), math.percentage(math.div($multiplier,$divisor)));
+    }
+    .text-primary-#{$multiplier} {
+      color: lighten(theme-color(primary), math.percentage(math.div($multiplier,$divisor)));
+    }
+    .boder-primary-#{$multiplier} {
+      border-color: lighten(theme-color(primary), math.percentage(math.div($multiplier,$divisor)));
+    }
+    .outline-primary-#{$multiplier} {
+      outline-color: lighten(theme-color(primary), math.percentage(math.div($multiplier,$divisor)));
+    }
+  }
+}

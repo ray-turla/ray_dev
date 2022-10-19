@@ -14,10 +14,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-RESOURCES_URL = BASE_DIR / 'resources'
+APPS_URL = BASE_DIR / 'apps'
 TEMPLATES_URL = BASE_DIR / 'templates'
 
-sys.path.insert(0, RESOURCES_URL)
+sys.path.insert(0, APPS_URL)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'    
+    'corsheaders',
+    'apps.home' 
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+  BASE_DIR / 'static'
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

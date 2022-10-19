@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+@function percent($size){
+  @return percentage(math.div($size, 100));
+}
+
+$steps: 10;
+
+@for $i from 1 through $steps {
+  $baseValue: $i * $steps;
+  .h-#{$baseValue} {
+    height: percent($baseValue);
+  }
+  .w-#{$baseValue} {
+    width: percent($baseValue);
+  }
+  .vh-#{$baseValue} {
+    height: #{$baseValue}vh;
+  }
+  .vw-#{$baseValue} {
+    width: #{$baseValue}vw;
+  }
+}

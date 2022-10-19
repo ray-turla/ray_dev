@@ -7,5 +7,18 @@
     "django-html": "html"
   },
   "prettier.enable": false,
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": "~/css",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "liveSassCompile.settings.includeItems": [
+    "/static/*.scss",           // for root static scss file
+    "/apps/**/static/**/*.scss" // for app specific scss file
+  ],
+  "liveSassCompile.settings.generateMap": false,
 }
